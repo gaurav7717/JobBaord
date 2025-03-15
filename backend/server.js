@@ -24,9 +24,23 @@ const logger = winston.createLogger({
 });
 
 // CORS Configuration (Corrected Origin)
-app.use(cors({
-  origin: 'https://job-board.vercel.app', // Corrected origin
-}));
+// CORS Configuration
+const allowedOrigins = [
+  "https://job-board.vercel.app", // Your Vercel URL
+  "http://localhost:3000", // Your local frontend URL
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+  })
+);
 
 app.use(express.json());
 app.use("/api/jobs", jobRoutes);
