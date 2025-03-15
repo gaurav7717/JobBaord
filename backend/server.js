@@ -5,37 +5,67 @@ import dotenv from "dotenv";
 import jobRoutes from "./routes/jobRoutes.js";
 import cron from "node-cron";
 import { exec } from "child_process";
+import winston from "winston"; // For logging
 
 dotenv.config();
 const app = express();
-app.use(cors());
+
+// Winston Logging Setup
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.json(),
+  defaultMeta: { service: 'job-board-backend' },
+  transports: [
+    new winston.transports.Console(),
+    // Add file transports for persistent logging if needed:
+    // new winston.transports.File({ filename: 'error.log', level: 'error' }),
+    // new winston.transports.File({ filename: 'combined.log' }),
+  ],
+});
+
+// CORS Configuration (Corrected Origin)
+app.use(cors({
+  origin: 'https://job-board.vercel.app', // Corrected origin
+}));
+
 app.use(express.json());
 app.use("/api/jobs", jobRoutes);
 
+// MongoDB Connection
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  dbName:'job_board'
+  dbName: 'job_board',
 })
-  .then(() => console.log("MongoDB Connected"))
-  .catch((err) => console.log(err));
+  .then(() => logger.info("MongoDB Connected"))
+  .catch((err) => logger.error(`MongoDB Connection Error: ${err}`));
 
+// Basic API Route
 app.get("/", (req, res) => {
   res.send("Job Board API is running...");
 });
 
-// Schedule the Python script to run at 2:00 AM
+// Scheduled Python Script (Commented Out for Deployment Considerations)
 // cron.schedule("0 2 * * *", () => {
-//   console.log("Running Python script at 2:00 AM");
+//   logger.info("Running Python script at 2:00 AM");
 //   exec("python scraper\\scraper.py", (error, stdout, stderr) => {
 //     if (error) {
-//       console.error(`exec error: ${error}`);
+//       logger.error(`exec error: ${error}`);
 //       return;
 //     }
-//     console.log(`stdout: ${stdout}`);
-//     console.error(`stderr: ${stderr}`);
+//     logger.info(`stdout: ${stdout}`);
+//     logger.error(`stderr: ${stderr}`);
 //   });
 // });
 
+// Error Handling Middleware
+app.use((err, req, res, next) => {
+  logger.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+
+// Server Start (Using PORT from Environment or 5000)
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => {
+  logger.info(`Server is running on port ${PORT}`);
+});
