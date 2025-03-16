@@ -11,7 +11,7 @@ const Home = () => {
   const [experienceInput, setExperienceInput] = useState("");
   const [availableLocations, setAvailableLocations] = useState([]);
 
-  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000"; // Use env var or default
+  const API_URL = 'https://jobboard-0egu.onrender.com'; // Use env var or default
 
   const fetchJobs = useCallback(async () => {
     setLoading(true);
