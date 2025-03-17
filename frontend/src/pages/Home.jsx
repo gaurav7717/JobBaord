@@ -86,7 +86,7 @@ const Home = () => {
   });
 
   return (
-    <div className="w-full min-w-xl mx-auto p-6 bg-gray-900 text-white min-h-full max-h-screen bg-gradient-to-b from-slate-950 to-gray-950 bg-opacity-10">
+    <div className="w-full min-w-xl mx-auto p-6 bg-gray-900 text-white max-h-full min-h-screen bg-gradient-to-b from-slate-950 to-gray-950 bg-opacity-10">
       <div className="flex gap-4 mb-4">
         <SearchFilter onSearch={setSearchTitle} />
 
@@ -117,12 +117,13 @@ const Home = () => {
             className="shadow border rounded w-full py-2 px-3 text-gray-100 bg-gray-800 leading-tight focus:outline-none focus:shadow-outline h-[2.3em]"
           />
         </div>
+
       </div>
 
       <h1 className="text-2xl font-bold mb-4 text-gray-300">All Job Listings</h1>
 
       {loading ? (
-        <p className="text-center w-full h-full">Loading...</p>
+        <p className="text-center w-full">Cold Loading...</p>
       ) : (
         <JobTable jobs={filteredJobs} />
       )}
