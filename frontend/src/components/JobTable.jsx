@@ -7,7 +7,7 @@ const JobTable = ({ jobs }) => {
   return (
     <div className="shadow-lg rounded-lg w-11/12 mx-auto max-h-[100vh] overflow-y-auto hide-scrollbar">
       <table className="rounded-lg w-full">
-        <thead className="bg-gray-700 sticky top-0 divide-x">
+        <thead className="bg-gray-700 sticky top-0  ">
           <tr className="">
             <th className="font-semibold p-2 text-white">Title</th>
             <th className="font-semibold p-2 text-white">Company</th>
@@ -16,7 +16,7 @@ const JobTable = ({ jobs }) => {
             <th className="font-semibold p-2 text-white">Actions</th>
           </tr>
         </thead>
-        <tbody className="border divide-y">
+        <tbody className="border divide-y ">
           {Array.isArray(jobs) && jobs.map((job) => (
             <tr key={job._id} className="">
               <td className="p-2 w-4/12">{job.job_title}</td>
