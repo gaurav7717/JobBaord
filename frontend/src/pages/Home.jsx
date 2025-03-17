@@ -86,55 +86,80 @@ const Home = () => {
   });
 
   return (
-    <div className="w-full min-w-xl mx-auto p-10 bg-gray-900 text-white min-h-screen bg-gradient-to-b from-slate-950 to-gray-950 bg-opacity-10">
-      <div className="flex justify-between">
-      <div className="flex gap-4 mb-4">
-        <SearchFilter onSearch={setSearchTitle} />
-
-        <div className="w-64 mb-4">
-          <select
-            value={selectedLocation}
-            onChange={(e) => setSelectedLocation(e.target.value)}
-            className="shadow border rounded w-full py-2 px-3 text-gray-100 leading-tight bg-gray-800 focus:outline-none focus:shadow-outline h-[2.3em]"
+    <div className="w-full min-h-screen bg-gradient-to-b from-slate-950 to-gray-950 p-6 text-white">
+      <div className="max-w-7xl mx-auto">
+        {/* Header and GitHub Link */}
+        <div className="flex flex-col md:flex-row justify-between items-center mb-6">
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-300 mb-4 md:mb-0">
+            All Job Listings
+          </h1>
+          <a
+            href="https://github.com/gaurav7717/JobBaord"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 hover:text-blue-400 underline italic"
           >
-            <option value="">All Locations</option>
-            {availableLocations.map((location) => (
-              <option key={location} value={location}>
-                {location}
-              </option>
-            ))}
-          </select>
+            GitHub Repo
+          </a>
         </div>
 
-        <div className="w-32">
-          <input
-            type="number"
-            min="0"
-            placeholder="Experience (years)"
-            value={experienceInput}
-            onChange={(e) =>
-              setExperienceInput(e.target.value.replace(/\D/g, ""))
-            }
-            className="shadow border rounded w-full py-2 px-3 text-gray-100 bg-gray-800 leading-tight focus:outline-none focus:shadow-outline h-[2.3em]"
-          />
+        {/* Filter Section */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+          {/* Title Search */}
+          <div className="relative">
+            {/* <MagnifyingGlassIcon className="h-5 w-5 absolute left-3 top-3 text-gray-400" /> */}
+            <input
+              type="text"
+              placeholder="Job title or keywords"
+              value={searchTitle}
+              onChange={(e) => setSearchTitle(e.target.value)}
+              className="w-full pl-10 pr-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-100 placeholder-gray-400"
+            />
+          </div>
+
+          {/* Location Filter */}
+          <div className="relative">
+            {/* <MapPinIcon className="h-5 w-5 absolute left-3 top-3 text-gray-400" /> */}
+            <select
+              value={selectedLocation}
+              onChange={(e) => setSelectedLocation(e.target.value)}
+              className="w-full pl-10 pr-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-100 appearance-none"
+            >
+              <option value="">All Locations</option>
+              {availableLocations.map((location) => (
+                <option key={location} value={location}>
+                  {location}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Experience Filter */}
+          <div className="relative">
+            {/* <BriefcaseIcon className="h-5 w-5 absolute left-3 top-3 text-gray-400" /> */}
+            <input
+              type="number"
+              min="0"
+              placeholder="Experience (years)"
+              value={experienceInput}
+              onChange={(e) => setExperienceInput(e.target.value.replace(/\D/g, ""))}
+              className="w-full pl-10 pr-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-100 placeholder-gray-400"
+            />
+          </div>
         </div>
-      </div>
-      <div className="italic text-blue-800 underline">
-    <a href="https://github.com/gaurav7717/JobBaord" target="_blank" >GitHub Repo</a>
-</div>
-      </div>
 
-      <h1 className="text-2xl font-bold mb-4 text-gray-300">
-        All Job Listings
-      </h1>
-
-      {loading ? (
-        <p className="text-center w-full">Cold Loading...</p>
-      ) : (
-        <JobTable jobs={filteredJobs} />
-      )}
+        {/* Job Table */}
+        {loading ? (
+          <div className="flex justify-center items-center h-64">
+            <p className="text-gray-400">Loading...</p>
+          </div>
+        ) : (
+          <JobTable jobs={filteredJobs} />
+        )}
+      </div>
     </div>
   );
 };
+
 
 export default Home;
