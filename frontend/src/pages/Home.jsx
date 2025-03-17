@@ -86,15 +86,15 @@ const Home = () => {
   });
 
   return (
-    <div className="max-w-5xl mx-auto p-6">
+    <div className="w-full min-w-xl mx-auto p-6 bg-gray-900 text-white min-h-full max-h-screen bg-gradient-to-b from-slate-950 to-gray-950 bg-opacity-10">
       <div className="flex gap-4 mb-4">
         <SearchFilter onSearch={setSearchTitle} />
 
-        <div className="w-64">
+        <div className="w-64 mb-4">
           <select
             value={selectedLocation}
             onChange={(e) => setSelectedLocation(e.target.value)}
-            className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow border rounded w-full py-2 px-3 text-gray-100 leading-tight bg-gray-800 focus:outline-none focus:shadow-outline h-[2.3em]"
           >
             <option value="">All Locations</option>
             {availableLocations.map((location) => (
@@ -114,15 +114,15 @@ const Home = () => {
             onChange={(e) =>
               setExperienceInput(e.target.value.replace(/\D/g, ""))
             }
-            className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow border rounded w-full py-2 px-3 text-gray-100 bg-gray-800 leading-tight focus:outline-none focus:shadow-outline h-[2.3em]"
           />
         </div>
       </div>
 
-      <h1 className="text-2xl font-bold mb-4">All Job Listings</h1>
+      <h1 className="text-2xl font-bold mb-4 text-gray-300">All Job Listings</h1>
 
       {loading ? (
-        <p className="text-center">Loading...</p>
+        <p className="text-center w-full h-full">Loading...</p>
       ) : (
         <JobTable jobs={filteredJobs} />
       )}

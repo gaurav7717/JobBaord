@@ -29,7 +29,7 @@ def get_mongo_collection():
         logging.error(f"Failed to connect to MongoDB: {e}")
         return None
 
-def scrape_naukri_jobs(url, max_pages=2):
+def scrape_naukri_jobs(url, max_pages=5):
     """Scrapes job listings from Naukri.com, saves to MongoDB and JSON."""
 
     driver = webdriver.Chrome()

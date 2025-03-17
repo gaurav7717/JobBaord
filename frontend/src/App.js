@@ -5,8 +5,8 @@ import Home from "./pages/Home";
 const App = () => {
   return (
     <Router>
-      <div className="">
-            <Routes>
+      <div className=" w-full min-h-full bg-black">
+        <Routes>
           <Route path="/" element={<Home />} />
         </Routes>
       </div>
