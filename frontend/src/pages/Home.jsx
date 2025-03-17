@@ -11,7 +11,7 @@ const Home = () => {
   const [experienceInput, setExperienceInput] = useState("");
   const [availableLocations, setAvailableLocations] = useState([]);
 
-  const API_URL = 'https://job-board-backend-latest.onrender.com'; // Use env var or default
+  const API_URL = "https://job-board-backend-latest.onrender.com"; // Use env var or default
 
   const fetchJobs = useCallback(async () => {
     setLoading(true);
@@ -86,7 +86,8 @@ const Home = () => {
   });
 
   return (
-    <div className="w-full min-w-xl mx-auto p-6 bg-gray-900 text-white max-h-full min-h-screen bg-gradient-to-b from-slate-950 to-gray-950 bg-opacity-10">
+    <div className="w-full min-w-xl mx-auto p-10 bg-gray-900 text-white min-h-screen bg-gradient-to-b from-slate-950 to-gray-950 bg-opacity-10">
+      <div className="flex justify-between">
       <div className="flex gap-4 mb-4">
         <SearchFilter onSearch={setSearchTitle} />
 
@@ -117,10 +118,15 @@ const Home = () => {
             className="shadow border rounded w-full py-2 px-3 text-gray-100 bg-gray-800 leading-tight focus:outline-none focus:shadow-outline h-[2.3em]"
           />
         </div>
-
+      </div>
+      <div className="italic text-blue-800 underline">
+    <a href="https://github.com/gaurav7717/JobBaord" target="_blank" >GitHub Repo</a>
+</div>
       </div>
 
-      <h1 className="text-2xl font-bold mb-4 text-gray-300">All Job Listings</h1>
+      <h1 className="text-2xl font-bold mb-4 text-gray-300">
+        All Job Listings
+      </h1>
 
       {loading ? (
         <p className="text-center w-full">Cold Loading...</p>

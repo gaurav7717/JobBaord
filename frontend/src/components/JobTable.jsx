@@ -5,7 +5,7 @@ const JobTable = ({ jobs }) => {
   console.log("Jobs prop in JobTable:", jobs);
 
   return (
-    <div className="shadow-lg rounded-lg w-11/12 mx-auto max-h-[100vh] overflow-y-auto hide-scrollbar">
+    <div className="shadow-lg rounded-lg w-11/12 mx-auto max-h-screen overflow-y-auto hide-scrollbar">
       <table className="rounded-lg w-full">
         <thead className="bg-gray-700 sticky top-0  ">
           <tr className="">
