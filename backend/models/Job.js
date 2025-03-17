@@ -5,12 +5,15 @@ const jobSchema = new mongoose.Schema({
   company: String,
   location: String,
   experience: String,
-  salary: String,
-  URL: String,
-  keyword: String,
-  // Timestamp: Date, // Add this if you have a timestamp field
+  max_experience: Number,
+  Timestamp: { type: Date, default: Date.now }
 });
 
-const Job = mongoose.model("Job", jobSchema, "job_listings"); // Ensure "job_listings" matches your collection name
+// Add indexes for better performance
+jobSchema.index({ job_title: 'text', location: 'text' });
+jobSchema.index({ max_experience: 1 });
+jobSchema.index({ Timestamp: -1 });
+
+const Job = mongoose.model("Job", jobSchema ,'job_listings');
 
 export default Job;
