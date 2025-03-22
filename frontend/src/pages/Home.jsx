@@ -14,14 +14,19 @@ const Home = () => {
   const [predictedCategory, setPredictedCategory] = useState("");
   const [predictedSkills, setPredictedSkills] = useState(new Set());
 
-  const API_URL =process.env.REACT_APP_API_URL; // Use env var or default
+  const API_URL = process.env.REACT_APP_API_URL; // Use env var or default
 
   // Calculate match percentage for each job
   // Calculate match percentage for each job
   const calculateMatch = (jobSkills) => {
-    const jobSkillsLower = (jobSkills || []).map(s => s.toLowerCase());
-    const matchingSkills = jobSkillsLower.filter(s => predictedSkills.has(s));
-    return predictedSkills.size > 0 
+    if (!Array.isArray(jobSkills)) {
+      // Handle the case where jobSkills is not an array
+      return 0; // Or return a default value or log an error
+    }
+
+    const jobSkillsLower = jobSkills.map((s) => s.toLowerCase());
+    const matchingSkills = jobSkillsLower.filter((s) => predictedSkills.has(s));
+    return predictedSkills.size > 0
       ? (matchingSkills.length / predictedSkills.size) * 100
       : 0;
   };
