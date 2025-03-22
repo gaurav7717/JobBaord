@@ -27,7 +27,7 @@ const PredictResume = ({ onPrediction }) => {
       formData.append('resume', file); // Ensure this matches the backend key name
       
       const response = await axios.post(
-        `${API_URL}/api/jobs`,
+        `${API_URL}/api/predict`,
         formData,
         {
           headers: {
