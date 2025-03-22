@@ -13,7 +13,7 @@ const PredictResume = ({ onPrediction }) => {
     setError('');
     setPrediction(null);
   };
-
+  const API_URL = "https://job-board-backend-latest.onrender.com";
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!file) {
@@ -27,7 +27,7 @@ const PredictResume = ({ onPrediction }) => {
       formData.append('resume', file); // Ensure this matches the backend key name
       
       const response = await axios.post(
-        'http://localhost:5000/api/predict',
+        `${API_URL}/api/jobs`,
         formData,
         {
           headers: {
