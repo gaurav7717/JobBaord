@@ -14,7 +14,7 @@ const Home = () => {
   const [predictedCategory, setPredictedCategory] = useState("");
   const [predictedSkills, setPredictedSkills] = useState(new Set());
 
-  const API_URL =process.env.REACT_APP_API_URL_; // Use env var or default
+  const API_URL =process.env.REACT_APP_API_URL; // Use env var or default
 
   // Calculate match percentage for each job
   // Calculate match percentage for each job
