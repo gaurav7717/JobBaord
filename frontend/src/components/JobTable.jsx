@@ -13,6 +13,7 @@ const JobTable = ({ jobs }) => {
             <th className="font-semibold p-2 text-white text-left hidden sm:table-cell">Company</th> {/* Hide on small screens */}
             <th className="font-semibold p-2 text-white text-left">Location</th>
             <th className="font-semibold p-2 text-white text-left hidden md:table-cell">Experience</th> {/* Hide on medium screens if needed */}
+            <th className="font-semibold p-2 text-white text-left hidden lg:table-cell">Skills</th> {/* New Skills Column - Hide on smaller screens */}
             <th className="font-semibold p-2 text-white text-left">Actions</th>
           </tr>
         </thead>
@@ -23,6 +24,7 @@ const JobTable = ({ jobs }) => {
               <td className="p-2 break-words hidden sm:table-cell">{job.company}</td>
               <td className="p-2 break-words">{job.location}</td>
               <td className="p-2 break-words hidden md:table-cell">{job.experience}</td>
+              <td className="p-2 break-words hidden lg:table-cell">{job.skills.join(", ")}</td> {/* Display skills as comma-separated */}
               <td className="p-2">
                 <a href={job.URL} target="_blank" rel="noopener noreferrer" className="bg-blue-500 hover:bg-blue-700 text-white px-3 py-1 rounded inline-block text-sm">
                   Apply

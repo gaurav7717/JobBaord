@@ -6,6 +6,7 @@ const jobSchema = new mongoose.Schema({
   location: String,
   experience: String,
   max_experience: Number,
+  skills : [String],
   Timestamp: { type: Date, default: Date.now }
 });
 

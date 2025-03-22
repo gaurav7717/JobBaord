@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback ,useMemo} from "react";
 import axios from "axios";
 import JobTable from "../components/JobTable";
 import SearchFilter from "../components/SearchFilter";
+import PredictResume from "../components/PredictResume";
 
 const Home = () => {
   const [jobs, setJobs] = useState([]);
@@ -10,8 +11,27 @@ const Home = () => {
   const [selectedLocation, setSelectedLocation] = useState("");
   const [experienceInput, setExperienceInput] = useState("");
   const [availableLocations, setAvailableLocations] = useState([]);
+  const [predictedCategory, setPredictedCategory] = useState("");
+  const [predictedSkills, setPredictedSkills] = useState(new Set());
 
-  const API_URL = "https://job-board-backend-latest.onrender.com"; // Use env var or default
+  const API_URL = "http://localhost:5000" || process.env.REACT_APP_API_URL_; // Use env var or default
+
+
+   // Calculate match percentage for each job
+   const calculateMatch = (jobSkills) => {
+    const jobSkillsLower = (jobSkills || []).map(s => s.toLowerCase());
+    const matchingSkills = jobSkillsLower.filter(s => predictedSkills.has(s));
+    return predictedSkills.size > 0 
+      ? (matchingSkills.length / predictedSkills.size) * 100
+      : 0;
+  };
+
+   // Add this effect to update search when prediction changes
+   useEffect(() => {
+    if (predictedCategory) {
+      setSearchTitle(predictedCategory);
+    }
+  }, [predictedCategory]);
 
   const fetchJobs = useCallback(async () => {
     setLoading(true);
@@ -60,30 +80,57 @@ const Home = () => {
     return numbers.length > 0 ? Math.max(...numbers) : 0;
   };
 
-  const filteredJobs = jobs.filter((job) => {
-    // Title filter
-    const titleMatch = job.job_title
-      .toLowerCase()
-      .includes(searchTitle.trim().toLowerCase());
+  const filteredJobs = useMemo(() => {
+    // Base filtering for location and experience
+    const baseFiltered = jobs.filter((job) => {
+      const locationMatch =
+        !selectedLocation ||
+        (job.location || "")
+          .split(",")
+          .map((l) => l.trim().toLowerCase())
+          .includes(selectedLocation.trim().toLowerCase());
 
-    // Location filter
-    const locationMatch =
-      !selectedLocation ||
-      (job.location || "")
-        .split(",")
-        .map((l) => l.trim().toLowerCase())
-        .includes(selectedLocation.trim().toLowerCase());
+      let experienceMatch = true;
+      if (experienceInput) {
+        const requiredExp = parseExperience(job.experience);
+        const inputExp = parseInt(experienceInput, 10);
+        experienceMatch = requiredExp === inputExp;
+      }
 
-    // Experience filter
-    let experienceMatch = true;
-    if (experienceInput) {
-      const requiredExp = parseExperience(job.experience);
-      const inputExp = parseInt(experienceInput, 10);
-      experienceMatch = requiredExp === inputExp;
-    }
+      return locationMatch && experienceMatch;
+    });
 
-    return titleMatch && locationMatch && experienceMatch;
-  });
+    // Title-based matches
+    const titleMatches = baseFiltered.filter(job =>
+      job.job_title.toLowerCase().includes(searchTitle.trim().toLowerCase())
+    );
+
+    // Skill-based matches (only if we have predicted skills)
+    const skillMatches = predictedSkills.size > 0
+      ? baseFiltered.filter(job =>
+          (job.skills || []).some(s => predictedSkills.has(s.toLowerCase()))
+        )
+      : [];
+
+    // Decide which results to show
+    const primaryResults = titleMatches.length > 0 ? titleMatches : skillMatches;
+
+    // Process and sort results
+    return primaryResults
+      .map(job => ({
+        ...job,
+        matchPercentage: calculateMatch(job.skills),
+        skillMatches: (job.skills || []).filter(s => 
+          predictedSkills.has(s.toLowerCase())
+        ).length
+      }))
+      .sort((a, b) => {
+        if (b.matchPercentage !== a.matchPercentage) {
+          return b.matchPercentage - a.matchPercentage;
+        }
+        return b.skillMatches - a.skillMatches;
+      });
+  }, [jobs, searchTitle, selectedLocation, experienceInput, predictedSkills]);
 
   return (
     <div className="w-full min-h-screen bg-gradient-to-b from-slate-950 to-gray-950 p-6 text-white">
@@ -93,6 +140,7 @@ const Home = () => {
           <h1 className="text-2xl md:text-3xl font-bold text-gray-300 mb-4 md:mb-0">
             All Job Listings
           </h1>
+         
           <a
             href="https://github.com/gaurav7717/JobBaord"
             target="_blank"
@@ -102,6 +150,12 @@ const Home = () => {
             GitHub Repo
           </a>
         </div>
+        <PredictResume 
+        onPrediction={(data) => {
+          setPredictedCategory(data.result_category);
+          setPredictedSkills(new Set(data.skills.map(s => s.toLowerCase())));
+        }}
+      />
 
         {/* Filter Section */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">

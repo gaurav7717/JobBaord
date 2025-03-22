@@ -1,10 +1,20 @@
 [
     {
         "job_title": "Software Engineer",
-        "company": "Root Info Solutions",
-        "location": null,
-        "experience": null,
-        "salary": "Not disclosed",
-        "URL": "https://www.naukri.com/job-listings-software-engineer-touch-consultants-new-delhi-gurugram-delhi-ncr-0-to-0-years-100325020483",
+        "company": "17 LIVE INC",
+        "location": "Remote",
+        "experience": "0 Yrs",
+        "salary": "7.5-8 Lacs PA",
+        "URL": "https://www.naukri.com/job-listings-software-engineer-17-live-inc-noida-0-to-0-years-190325015432",
         "keyword": "software engineer",
+        "skills": [
+            "Java",
+            "Algorithms",
+            "Linux",
+            "GCP",
+            "Postgresql",
+            "Data Structures",
+            "OOPS",
+            "Rest Api Development"
+        ],
         "_id": 
