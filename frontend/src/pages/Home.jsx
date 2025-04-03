@@ -14,7 +14,7 @@ const Home = () => {
   const [predictedCategory, setPredictedCategory] = useState("");
   const [predictedSkills, setPredictedSkills] = useState(new Set());
 
-  const API_URL = "http://localhost:5000"; // Use env var or default
+  const API_URL = "https://job-board-backend-latest.onrender.com"; // Use env var or default
 
   // Calculate match percentage for each job
   // Calculate match percentage for each job
