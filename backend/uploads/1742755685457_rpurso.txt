@@ -1,0 +1,68 @@
+R Pursotham
+ rpursotham50@gmail.com 
+6206152567 
+ð%20r-pursotham-54764424a 
+§%20RPURSOTHAM 
+https://medium.com/@rpursotham50 
+PROFILE
+ Passionate Data Science student with experience in automation, NLP, and machine learning. Skilled in 
+extracting insights from unstructured data using Python and advanced analytics techniques. Strong problem
+solving and analytical abilities, with hands-on experience in email processing, OCR, entity extraction, and text 
+summarization. Eager to apply data-driven solutions to real-world challenges.
+ EXPERIENCE
+ Intern
+ Wipro Private limited
+ •
+ Developed AI-powered email and document processing system.
+ 01/2025 – 03/2025
+ Chennai, India
+ •
+ Implemented BERT-based NER for client name, address, and invoice detail 
+extraction.
+ •
+ Integrated EasyOCR & PyMuPDF for text extraction from scanned documents.
+ •
+ Leveraged EasyOCR and PyMuPDF for OCR on scanned PDFs and images.
+ •
+ Applied regex for structured data extraction.
+ •
+ Integrated Transformers (BART, RoBERTa) for text summarization and question
+answering.
+ SKILLS
+ •
+ Machine Learning, Deep Learning
+ •
+ Natural Language Processing
+ •
+ Large Language Models
+ •
+ Retrieval Augmented Generation (RAG)
+ •
+ Python, R Programming
+ EDUCATION
+ M.SC In Applied Data Science
+ SRM University Of Science And Technology
+ 07/2023 – present
+ CGPA : 8.07
+ B.SC In Artificial Intelligence and Machine learning
+ VELS University Of Science And Technology
+ 07/2020 – 07/2023
+ CGPA : 7.43
+ PROJECTS
+ Job Fit Analyzer
+ •
+ Developed a machine learning model to predict job roles based on resume content.
+ •
+ Utilized Pandas for data preprocessing, feature extraction, and cleaning resume datasets.
+ •
+ Implemented classification algorithms using Scikit-learn to achieve accurate predictions.
+ •
+ Evaluated the model’s performance with metrics such as accuracy, precision, and recall to fine-tune results.
+ CERTIFICATES
+ Wipro
+ Cognifyz Technologies
+ AWS Academy AICTE
+ LANGUAGES
+ English
+ Tamil
+ Hindi

@@ -1,0 +1,32 @@
+R pursotham
+	rpursotham50@gmail.com 	6206152567    	    ð%20r-pursotham-54764424a 
+§%20RPURSOTHAM https://medium.com/@rpursotham50 
+PROFILE
+ 
+Final-year MS.c Data science student with a strong interest in data science and analytics. I have worked on projects utilizing data analysis tools and techniques, enhancing my skills in Python, R, and machine learning. My experience in quality assurance has sharpened my analytical abilities and communication skills. I am eager to learn and grow within your company, contributing to innovative data-driven solutions.
+PROFESSIONAL EXPERIENCE
+ 
+Developed AI-powered email and document processing system.•
+Implemented Retrieval-Augmented Generation (RAG) with LLMs for enhanced•	 data extraction
+Implemented BERT-based NER for client name, address, and invoice detail•	 extraction.
+Leveraged EasyOCR and PyMuPDF for OCR on scanned PDFs and images.•
+Applied regex for structured data extraction•
+Integrated text summarization using BART and Q&A using RoBERTa.•
+Optimized document processing with multi-threading and async calls for faster•	 performance.
+SKILLS
+ 
+EDUCATION
+ 
+M.SC In Applied Data Science
+SRM University Of Science And Technology	07/2023 – present CGPA : 8.07
+B.SC In Artificial Intelligence and Machine learning VELS University Of Science And Technology	07/2020 – 07/2023 CGPA : 7.43
+PROJECTS
+Job Fit Analyzer
+ • Developed a machine learning model to predict job roles based on resume content.
+Utilized Pandas for data preprocessing, feature extraction, and cleaning resume datasets.•
+Implemented classification algorithms using Scikit-learn to achieve accurate predictions.•
+Evaluated the model’s performance with metrics such as accuracy, precision, and recall to fine-tune results.•
+CERTIFICATES
+ 
+English	Hindi
+Tamil

@@ -1,0 +1,42 @@
+Gaurav Pradhan 
+7717770208 — gaurav.pradhan.7me@gmail.com  — linkedin.com/in/gp7717  — github.com/gaurav7717 
+Summary — Aspiring software engineer looking for entry-level jobs with keen interest in developing creative and efficient 
+solutions leveraging latest technologies. Eager to contribute to innovative projects and growth. 
+Skills 
+Languages Java, SQL , HTML, CSS 
+Frameworks React.js, Node.js, Express.js, Firebase 
+Databases MongoDB, MySQL 
+Experience 
+Tools VS Code, Postman, Git 
+Methodologies Agile, Debugging, Unit Testing 
+Deployment Vercel, Render, Github 
+The Profit AI 
+Feb 2025 – Present 
+Intern – Implemented features in the ERP software for better operational efficiency. – Conducted thorough application testing, regression testing for timely bug resolution and suggested improvement for 
+overall app quality. 
+Oriental Outsourcing Consultants (P) Ltd. 
+Jun 2024 – Nov 2024 
+QA Intern – Carried out manual testing for over 10+ web/mobile apps, identified and documented 40+ critical bugs. – Developing test plans as per client requirements and testing against SRS. – Collaborated with developers for bug resolution and documented bugs in Excel. – Followed agile methodology to enable faster response to changing requirements. 
+Projects 
+Job Board with Recommendation 
+March 2025 – Present 
+Technologies: MERN, Tailwind CSS, Selenium, Python – Built a job board that recommends jobs with the highest matches to skills and relevant to the resume. – Scraped data from Naukri.com using Selenium, and predicted job titles and extracted skills from the input resume using 
+a trained machine learning model. 
+Expense Tracker with AI Analysis 
+Technologies: MERN , MUI, Firebase, Ollama 
+Jan 2025 – Feb 2025 – Developed a expense tracker with CRUD functionalities and Firebase authentication. – Visualized transaction analytics through charts. – Integrated AI-based analysis using a LLM model running in Ollama for answering transaction-related queries. 
+One-One Public Thought Sharing 
+Nov 2024 – Dec 2024 
+Technologies: React, Firebase, Material-UI, Vercel – Built a simple application for thought sharing where users can publicly post text and images on the platform, using 
+Firebase for CRUD operations and authentication. 
+Education 
+Bachelor of Technology in Computer Science and Engineering 
+Punjab Technical University 
+GPA: 8.5 
+Certifications 
+2021 - 2025 – HackerRank - SQL Basic – GCP - Google Cloud Computing Foundations: Cloud Computing Fundamentals 
+Publication 
+Deep Learning for Cucumber Agriculture: A Hybrid CNN-SVM System for Disease Identification 
+Gaurav Pradhan; Rahul Thakur Sharma; Aradhana Kumari Shah; Vinay Kukreja 
+March 2024 
+IEEE 
